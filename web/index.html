@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Записная книжка отеля</title>
+<style>
+body{font-family:sans-serif;max-width:900px;margin:20px auto;padding:0 10px}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:4px}
+.err{color:#b00}.hidden{display:none}input,textarea{margin:2px}
+</style>
+</head>
+<body>
+<h1>Записная книжка отеля</h1>
+
+<section id="auth">
+  <input id="email" placeholder="email"> <input id="password" type="password" placeholder="пароль">
+  <button onclick="login()">Войти</button> <button onclick="register()">Регистрация</button>
+</section>
+
+<section id="main" class="hidden">
+  <button onclick="logout()">Выйти</button>
+  <input id="q" placeholder="Поиск: ФИО, телефон, номер" oninput="loadGuests()">
+  <form id="form" onsubmit="saveGuest(event)">
+    <input type="hidden" id="id">
+    <input id="full_name" placeholder="ФИО" required>
+    <input id="phone" placeholder="Телефон" required>
+    <input id="room" placeholder="Номер" required size="5">
+    <input id="check_in" type="date" required> <input id="check_out" type="date" required>
+    <br><textarea id="note" placeholder="Заметка" cols="60"></textarea>
+    <button>Сохранить</button> <button type="button" onclick="resetForm()">Очистить</button>
+  </form>
+  <table><thead><tr><th>ФИО</th><th>Телефон</th><th>Номер</th><th>Заезд</th><th>Выезд</th><th>Заметка</th><th></th></tr></thead>
+  <tbody id="rows"></tbody></table>
+</section>
+<p id="msg" class="err"></p>
+<script src="app.js"></script>
+</body>
+</html>

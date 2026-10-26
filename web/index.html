@@ -6,7 +6,7 @@
 <style>
 body{font-family:sans-serif;max-width:900px;margin:20px auto;padding:0 10px}
 table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:4px}
-.err{color:#b00}.hidden{display:none}input,textarea{margin:2px}
+.err{color:#b00;min-height:1.2em}td.nw{white-space:nowrap}.hidden{display:none}input,textarea{margin:2px}
 </style>
 </head>
 <body>
@@ -17,9 +17,12 @@ table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:4p
   <button onclick="login()">Войти</button> <button onclick="register()">Регистрация</button>
 </section>
 
+<p id="authMsg" class="err"></p>
+
 <section id="main" class="hidden">
   <button onclick="logout()">Выйти</button>
-  <input id="q" placeholder="Поиск: ФИО, телефон, номер" oninput="loadGuests()">
+  <input id="q" placeholder="Поиск: ФИО, телефон, номер" oninput="searchInput()">
+  <h3 id="formTitle">Новый гость</h3>
   <form id="form" onsubmit="saveGuest(event)">
     <input type="hidden" id="id">
     <input id="full_name" placeholder="ФИО" required>
@@ -29,10 +32,10 @@ table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:4p
     <br><textarea id="note" placeholder="Заметка" cols="60"></textarea>
     <button>Сохранить</button> <button type="button" onclick="resetForm()">Очистить</button>
   </form>
+  <p id="msg" class="err"></p>
   <table><thead><tr><th>ФИО</th><th>Телефон</th><th>Номер</th><th>Заезд</th><th>Выезд</th><th>Заметка</th><th></th></tr></thead>
   <tbody id="rows"></tbody></table>
 </section>
-<p id="msg" class="err"></p>
 <script src="app.js"></script>
 </body>
 </html>
